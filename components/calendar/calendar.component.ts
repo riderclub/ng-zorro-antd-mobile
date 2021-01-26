@@ -100,7 +100,9 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   @Input()
   set enterDirection(value) {
     this._enterDirection = value;
-    if (this._enterDirection === 'horizontal') {
+    if (this._enterDirection === 'disable') {
+      this.contentAnimateClass = '';
+    } else if (this._enterDirection === 'horizontal') {
       this.contentAnimateClass = 'slideH-enter slideH-enter-active';
     } else {
       this.contentAnimateClass = 'slideV-enter slideV-enter-active';
@@ -142,6 +144,10 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   @Input()
   set type(value) {
     this.props.type = value;
+  }
+  @Input()
+  set showHeader(value) {
+    this.props.showHeader = value;
   }
   @Input()
   set showShortcut(value) {
@@ -218,7 +224,9 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   }
 
   showAnimation() {
-    if (this._enterDirection === 'horizontal') {
+    if (this._enterDirection === 'disable') {
+      this.contentAnimateClass = '';
+    } else if (this._enterDirection === 'horizontal') {
       this.contentAnimateClass = 'slideH-enter slideH-enter-active';
     } else {
       this.contentAnimateClass = 'slideV-enter slideV-enter-active';
@@ -227,7 +235,9 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   }
 
   hideAnimation() {
-    if (this._enterDirection === 'horizontal') {
+    if (this._enterDirection === 'disable') {
+      this.contentAnimateClass = '';
+    } else if (this._enterDirection === 'horizontal') {
       this.contentAnimateClass = 'slideH-leave slideH-leave-active';
     } else {
       this.contentAnimateClass = 'slideV-leave slideV-leave-active';
