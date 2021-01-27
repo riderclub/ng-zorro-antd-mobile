@@ -12,7 +12,7 @@ export interface CalendarHeaderPropsType {
 }
 
 export interface CalendarPropsType {
-  enterDirection?: 'horizontal' | 'vertical';
+  enterDirection?: 'disable' | 'horizontal' | 'vertical';
   locale?: DateModels.Locale;
   onCancel?: () => void;
   onClear?: () => void;
@@ -21,6 +21,7 @@ export interface CalendarPropsType {
   prefixCls?: string;
   renderShortcut?: (select: (startDate?: Date, endDate?: Date) => void) => any;
   renderHeader?: (prop: CalendarHeaderPropsType) => any;
+  showHeader?: boolean;
   showShortcut?: boolean;
   style?: any;
   title?: string;

@@ -4,6 +4,7 @@
 <span *ngIf="isShow">
   <div class="{{ 'content animate ' + contentAnimateClass }}">
     <CalendarHeader
+      *ngIf="props.showHeader"
       [locale]="props.locale"
       [closeIcon]="closeIconHtml"
       [showClear]="showClear"
