@@ -23,6 +23,7 @@ export class CalendarDatePickerComponent extends CalendarDatePickerBaseComponent
   @ViewChild('panel', { static: true })
   panelDom: ElementRef;
 
+  @Input() getDateExtra: (date: Date) => DateModels.ExtraData;
   @Input()
   set onCellClick(value) {
     this.props.onCellClick = value;

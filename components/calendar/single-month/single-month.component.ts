@@ -17,6 +17,7 @@ export class CalendarSingleMonthComponent implements OnInit, AfterViewInit {
   };
   ref: (dom) => void;
   wrapperDivDOM: HTMLDivElement | null;
+  private _getDateExtra: (date: Date) => DateModels.ExtraData;
 
   @Input()
   set data(value) {
@@ -25,13 +26,18 @@ export class CalendarSingleMonthComponent implements OnInit, AfterViewInit {
       ...value
     };
   }
+  @Input()
+  set getDateExtra(value) {
+    this._getDateExtra = value;
+    this.updateWeeks();
+  }
 
   @HostBinding('class.single-month') singleMonth: boolean = true;
 
   constructor(private _elementRef: ElementRef) {}
 
   genWeek = (weeksData: DateModels.CellData[], index: number) => {
-    const { getDateExtra, monthData, onCellClick, locale, rowSize } = this.props;
+    const { monthData, onCellClick, locale, rowSize } = this.props;
     let rowCls = 'row';
     let weeksDataList = [];
     if (rowSize === 'xl') {
@@ -39,7 +45,7 @@ export class CalendarSingleMonthComponent implements OnInit, AfterViewInit {
     }
 
     weeksData.forEach((day, dayOfWeek) => {
-      const extra = (getDateExtra && getDateExtra(new Date(day.tick))) || {};
+      const extra = (this._getDateExtra && this._getDateExtra(new Date(day.tick))) || {};
       let info = extra.info;
       const disable = extra.disable || day.outOfDate;
       const readonly = extra.readonly;
