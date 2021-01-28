@@ -14,6 +14,7 @@
         *ngFor="let item of visibleMonth; let i = index"
         style="display: block;"
         [data]="item.component"
+        [getDateExtra]="getDateExtra"
       ></CalendarSingleMonth>
     </div>
   </div>

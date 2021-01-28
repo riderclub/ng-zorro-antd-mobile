@@ -39,7 +39,8 @@ export interface CalendarStateType {
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CalendarComponent), multi: true }]
 })
 export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestroy {
-  isShow: boolean = false;
+  isHidden: boolean = false;
+  isNeverOpen: boolean = true; // Allows to wait for first opening to construct calendar
   contentAnimateClass: string;
   maskAnimateClass: string;
   showClear: boolean = false;
@@ -66,6 +67,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   } as CalendarStateType;
 
   private _unsubscribe$ = new Subject<void>();
+  private _visibleTimeoutId = null;
   private _enterDirection: string;
   private _dateModelType: number;
   private _dateModelValue: any;
@@ -111,14 +113,24 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   @Input()
   set visible(value) {
     this.props.visible = value;
+    if (this._visibleTimeoutId !== null) {
+      clearTimeout(this._visibleTimeoutId);
+      this._visibleTimeoutId = null;
+    }
     if (value === true || value === 'true') {
       this.showAnimation();
-      this.isShow = true;
+      this.isHidden = false;
+      this.isNeverOpen = false;
     } else {
       this.hideAnimation();
-      setTimeout(() => {
-        this.isShow = false;
-      }, 300);
+      if (this._enterDirection === 'disable') {
+        this.isHidden = true;
+      } else {
+        this._visibleTimeoutId = setTimeout(() => {
+          this.isHidden = true;
+          this._visibleTimeoutId = null;
+        }, 300);
+      }
     }
   }
   @Input()
