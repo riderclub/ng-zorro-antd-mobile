@@ -1,4 +1,13 @@
-import { Component, OnInit, ViewEncapsulation, AfterViewInit, Input, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  AfterViewInit,
+  Input,
+  forwardRef,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { PickerComponent } from '../picker/picker.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
@@ -13,7 +22,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class PickerViewComponent extends PickerComponent implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
+export class PickerViewComponent extends PickerComponent
+  implements OnInit, AfterViewInit, ControlValueAccessor, OnChanges {
   options;
   @Input()
   data: Array<any> = [];

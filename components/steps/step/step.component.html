@@ -6,10 +6,15 @@
     <span *ngIf="isTemplateRef(icon)" [ngClass]="iconCls">
       <ng-template [ngTemplateOutlet]="icon"></ng-template>
     </span>
-    <span *ngIf="!isTemplateRef(icon) && (status === 'error' || status === 'finish' || status === 'wait')" [ngClass]="iconCls">
+    <span
+      *ngIf="!isTemplateRef(icon) && (status === 'error' || status === 'finish' || status === 'wait')"
+      [ngClass]="iconCls"
+    >
       <Icon [type]="icon" [size]="iconSize"> </Icon>
     </span>
-    <span *ngIf="!isTemplateRef(icon) && !(status === 'error' || status === 'finish' || status === 'wait')" [ngClass]="iconCls"
+    <span
+      *ngIf="!isTemplateRef(icon) && !(status === 'error' || status === 'finish' || status === 'wait')"
+      [ngClass]="iconCls"
       >{{ stepNumber }}
     </span>
   </div>

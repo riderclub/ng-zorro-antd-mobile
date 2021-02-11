@@ -74,10 +74,16 @@ describe('GridComponent', () => {
     component.isCarousel = true;
     component.carouselMaxRow = 2;
     fixture.detectChanges();
-    expect(gridEle.nativeElement.querySelector('carouselslide').getElementsByTagName('flex').length).toBe(2, 'carouselMaxRow is work');
+    expect(gridEle.nativeElement.querySelector('carouselslide').getElementsByTagName('flex').length).toBe(
+      2,
+      'carouselMaxRow is work'
+    );
     component.carouselMaxRow = 1;
     fixture.detectChanges();
-    expect(gridEle.nativeElement.querySelector('carouselslide').getElementsByTagName('flex').length).toBe(1, 'carouselMaxRow is work');
+    expect(gridEle.nativeElement.querySelector('carouselslide').getElementsByTagName('flex').length).toBe(
+      1,
+      'carouselMaxRow is work'
+    );
   });
 
   it('onClick work', () => {

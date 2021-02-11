@@ -232,7 +232,7 @@ export class CalendarDatePickerBaseComponent {
     const filterFunc = (vm: DateModels.MonthData) =>
       vm.y &&
       vm.height &&
-      (vm.y + vm.height > scrollTop - MAX_VIEW_PORT && vm.y < scrollTop + clientHeight + MAX_VIEW_PORT);
+      vm.y + vm.height > scrollTop - MAX_VIEW_PORT && vm.y < scrollTop + clientHeight + MAX_VIEW_PORT;
 
     if (this.props.infiniteOpt && this.visibleMonth.length > 12) {
       this.visibleMonth = this.visibleMonth.filter(filterFunc).sort((a, b) => +a.firstDate - +b.firstDate);

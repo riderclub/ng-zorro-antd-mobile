@@ -26,7 +26,7 @@ import { DatePickerOptions } from '../date-picker/date-picker-options.provider';
       multi: true
     },
     DatePickerOptions
-  ],
+  ]
 })
 export class DatePickerViewComponent extends DatePickerComponent
   implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {

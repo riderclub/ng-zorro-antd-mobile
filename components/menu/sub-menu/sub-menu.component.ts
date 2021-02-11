@@ -50,7 +50,7 @@ export class SubMenuComponent implements OnChanges {
   }
 
   selected(dataItem) {
-    return this.showSelect && (this.selItem.length > 0 && this.selItem.indexOf(dataItem.value) !== -1);
+    return this.showSelect && this.selItem.length > 0 && this.selItem.indexOf(dataItem.value) !== -1;
   }
 
   getClass(dataItem) {

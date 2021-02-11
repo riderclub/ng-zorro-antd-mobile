@@ -182,7 +182,10 @@ export class TestActionSheetBasicComponent {
   }
 
   showShareActionSheetMulpitleLine = () => {
-    const data = [[...this.dataList1, this.dataList1[2]], [this.dataList1[3], this.dataList1[4]]];
+    const data = [
+      [...this.dataList1, this.dataList1[2]],
+      [this.dataList1[3], this.dataList1[4]]
+    ];
     this._actionSheet.showShareActionSheetWithOptions(
       {
         options: data,

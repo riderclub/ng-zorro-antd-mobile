@@ -70,8 +70,12 @@ export class StepComponent implements OnInit {
   set currentIndex(current: number) {
     this._currentIndex = current;
     if (!this.isCustomStatus) {
-      this._status = current > this.stepNumber ? StepStatusEnum.FINISH : current === this.stepNumber ?
-        this.outStatus || ('' as any) : StepStatusEnum.WAIT;
+      this._status =
+        current > this.stepNumber
+          ? StepStatusEnum.FINISH
+          : current === this.stepNumber
+          ? this.outStatus || ('' as any)
+          : StepStatusEnum.WAIT;
       this.setIcon();
       this.setClass();
     }
@@ -82,7 +86,7 @@ export class StepComponent implements OnInit {
   @HostBinding('class.am-steps-item')
   clsStepItem: boolean = true;
 
-  constructor(private _el: ElementRef) { }
+  constructor(private _el: ElementRef) {}
 
   isTemplateRef(value) {
     return value instanceof TemplateRef;
@@ -113,7 +117,7 @@ export class StepComponent implements OnInit {
     }
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }
 
 export enum StepStatusEnum {

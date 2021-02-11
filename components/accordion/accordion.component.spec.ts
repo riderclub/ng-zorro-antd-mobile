@@ -44,7 +44,9 @@ describe('AccordionComponent', () => {
     fixture.detectChanges();
     accordionEle.nativeElement.querySelector('.am-accordion-header').click();
     fixture.detectChanges();
-    expect(accordionEle.nativeElement.querySelector('.am-accordion-content').classList).toContain('am-accordion-content-active');
+    expect(accordionEle.nativeElement.querySelector('.am-accordion-content').classList).toContain(
+      'am-accordion-content-active'
+    );
     accordionEle.nativeElement.querySelector('.am-accordion-header').click();
     fixture.detectChanges();
     expect(accordionEle.nativeElement.querySelector('.am-accordion-content-active')).toBeNull();

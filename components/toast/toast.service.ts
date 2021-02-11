@@ -68,7 +68,10 @@ export class ToastService {
     options.position = position;
     const props = this._initConfig(config, options);
 
-    this.insertElement = document.body.insertBefore(document.createElement(this.toastCompFactory.selector), document.body.firstChild);
+    this.insertElement = document.body.insertBefore(
+      document.createElement(this.toastCompFactory.selector),
+      document.body.firstChild
+    );
     let instance: any;
     let subject: any;
 

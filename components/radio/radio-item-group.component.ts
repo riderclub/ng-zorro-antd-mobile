@@ -58,29 +58,24 @@ export class RadioItemGroupComponent implements AfterContentInit, OnDestroy, Con
   }
 
   ngAfterContentInit() {
-    this.radioItems.changes
-      .pipe(
-        startWith(null),
-        takeUntil(this.destroy$)
-      )
-      .subscribe(() => {
-        this.updateChildrenStatus();
-        if (this.selectSubscription) {
-          this.selectSubscription.unsubscribe();
-        }
-        this.selectSubscription = merge(...this.radioItems.map(radioItem => radioItem.select$))
-          .pipe(takeUntil(this.destroy$))
-          .subscribe(radioItem => {
-            if (typeof this.selectedValue !== 'undefined' && null !== this.selectedValue) {
-              this.selectedValue = radioItem.value;
-              this._ngModelOnChange(radioItem.value);
-              this.updateChildrenStatus();
-              if (this.onChange) {
-                this.onChange.emit({ name: radioItem.name, value: radioItem.value });
-              }
+    this.radioItems.changes.pipe(startWith(null), takeUntil(this.destroy$)).subscribe(() => {
+      this.updateChildrenStatus();
+      if (this.selectSubscription) {
+        this.selectSubscription.unsubscribe();
+      }
+      this.selectSubscription = merge(...this.radioItems.map(radioItem => radioItem.select$))
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(radioItem => {
+          if (typeof this.selectedValue !== 'undefined' && null !== this.selectedValue) {
+            this.selectedValue = radioItem.value;
+            this._ngModelOnChange(radioItem.value);
+            this.updateChildrenStatus();
+            if (this.onChange) {
+              this.onChange.emit({ name: radioItem.name, value: radioItem.value });
             }
-          });
-      });
+          }
+        });
+    });
   }
 
   ngOnDestroy() {

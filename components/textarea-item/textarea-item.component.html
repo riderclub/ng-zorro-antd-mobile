@@ -19,7 +19,7 @@
   ></textarea>
 </div>
 <div
-  *ngIf="clear && editable && !disabled && (value && value.length > 0)"
+  *ngIf="clear && editable && !disabled && value && value.length > 0"
   class="{{ prefixCls }}-clear"
   [ngClass]="clearCls"
   (click)="clearInput()"
