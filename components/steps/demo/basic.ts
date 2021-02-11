@@ -200,7 +200,7 @@ export class DemoStepsBasicComponent implements OnInit {
   current = 0;
   index = 'First-content';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.steps = [

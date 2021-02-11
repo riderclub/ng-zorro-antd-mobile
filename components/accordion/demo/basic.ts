@@ -21,7 +21,7 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
       <div>Title 1</div>
     </ng-template>
     <ng-template #title2>
-      <img src="/assets/img/logo.svg" style="width:36px"/>
+      <img src="/assets/img/logo.svg" style="width:36px" />
     </ng-template>
   `
 })

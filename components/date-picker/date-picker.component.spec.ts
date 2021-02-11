@@ -4,14 +4,7 @@ import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { en_US, zh_CN } from '../locale-provider/locale';
 import { DatePickerOptions, DatePickerModule, DatePickerComponent } from './index';
-import {
-  Toast,
-  ListModule,
-  ToastModule,
-  ButtonModule,
-  LocaleProviderModule,
-  LocaleProviderService
-} from '../..';
+import { Toast, ListModule, ToastModule, ButtonModule, LocaleProviderModule, LocaleProviderService } from '../..';
 import { dispatchTouchEvent } from '../core/testing';
 
 describe('DatePickerComponent', () => {

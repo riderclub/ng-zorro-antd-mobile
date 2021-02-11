@@ -1,5 +1,5 @@
 <div class="{{ prefixListCls }}-line">
-  <div #lableContent [ngClass]="labelCls">
+  <div #labelContent [ngClass]="labelCls">
     <ng-template *ngIf="isTemplateRef(content)" [ngTemplateOutlet]="content"></ng-template>
     <ng-container *ngIf="!isTemplateRef(content)">{{ content }}</ng-container>
   </div>
@@ -40,11 +40,12 @@
         (compositionend)="compositionEnd()"
         (blur)="inputBlur(value)"
         (focus)="inputFocus(value)"
+        [autocomplete]="autoComplete"
       />
     </div>
   </div>
   <div
-    *ngIf="clear && editable && !disabled && (value && value.length > 0)"
+    *ngIf="clear && editable && !disabled && value && value.length > 0"
     class="{{ prefixCls }}-clear"
     (click)="clearInput()"
   ></div>

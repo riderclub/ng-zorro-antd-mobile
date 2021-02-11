@@ -67,8 +67,14 @@ export class DemoRadioBasicComponent {
   disabled: boolean = true;
   selectedStatus1 = { value: 0, name: 'doctor' };
   selectedStatus2 = { value: 0, name: 'basketball', extra: 'details' };
-  data = [{ value: 0, name: 'doctor' }, { value: 1, name: 'bachelor' }];
-  data2 = [{ value: 0, name: 'basketball', extra: 'details' }, { value: 1, name: 'football', extra: 'details' }];
+  data = [
+    { value: 0, name: 'doctor' },
+    { value: 1, name: 'bachelor' }
+  ];
+  data2 = [
+    { value: 0, name: 'basketball', extra: 'details' },
+    { value: 1, name: 'football', extra: 'details' }
+  ];
 
   constructor() {}
 

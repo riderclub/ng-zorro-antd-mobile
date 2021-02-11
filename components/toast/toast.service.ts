@@ -69,7 +69,10 @@ export class ToastService {
     options.position = position;
     const props = this._initConfig(config, options);
 
-    this.insertElement = document.body.insertBefore(document.createElement(this.toastCompFactory.selector), document.body.firstChild);
+    this.insertElement = document.body.insertBefore(
+      document.createElement(this.toastCompFactory.selector),
+      document.body.firstChild
+    );
     let instance: any;
     let subject: any;
     // 需要等待应用程序稳定后再安装，比如在 ngOnInit 里调用

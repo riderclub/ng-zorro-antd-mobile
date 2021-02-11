@@ -65,7 +65,7 @@ export class StepsComponent implements OnInit, AfterContentInit {
   @HostBinding('class.am-steps-horizontal')
   clsStepsHztl: boolean;
 
-  constructor(private _elf: ElementRef, private _render: Renderer2) { }
+  constructor(private _elf: ElementRef, private _render: Renderer2) {}
 
   setStepStyle() {
     const itemCount = this.stepItems.length;
@@ -114,5 +114,4 @@ export class StepsComponent implements OnInit, AfterContentInit {
       }, 0);
     });
   }
-
 }

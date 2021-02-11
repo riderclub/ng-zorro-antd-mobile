@@ -220,6 +220,8 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
     this.clsHasCount = this.hasCount;
     this.labelCls = {
       [`${this.prefixCls}-label`]: true,
+      [`${this.prefixCls}-label-0`]: this._labelNumber === 0,
+      [`${this.prefixCls}-label-1`]: this._labelNumber === 1,
       [`${this.prefixCls}-label-2`]: this._labelNumber === 2,
       [`${this.prefixCls}-label-3`]: this._labelNumber === 3,
       [`${this.prefixCls}-label-4`]: this._labelNumber === 4,

@@ -221,9 +221,9 @@ export class TabsComponent implements DoCheck, AfterContentInit {
         const distanceToChangeTabPx = this.tabContent.nativeElement.offsetWidth * this.distanceToChangeTab;
         if (
           (this.getVelocity(distance, event.timeStamp - this._startTime) <= this._velocityThreshold &&
-            (this.useOnPan && this.swipeable && Math.abs(distance) > distanceToChangeTabPx)) ||
+            this.useOnPan && this.swipeable && Math.abs(distance) > distanceToChangeTabPx) ||
           (this.getVelocity(distance, event.timeStamp - this._startTime) > this._velocityThreshold &&
-            (this.swipeable && Math.abs(distance) > distanceToChangeTabPx / 2))
+            this.swipeable && Math.abs(distance) > distanceToChangeTabPx / 2)
         ) {
           if (distance < 0 && this.activeTab < this.getCurrentTabPanes().length - 1) {
             this.keyToSelect++;
@@ -237,9 +237,9 @@ export class TabsComponent implements DoCheck, AfterContentInit {
         const distanceToChangeTabPx = this.tabContent.nativeElement.offsetHeight * this.distanceToChangeTab;
         if (
           (this.getVelocity(distance, event.timeStamp - this._startTime) <= this._velocityThreshold &&
-            (this.useOnPan && this.swipeable && Math.abs(distance) > distanceToChangeTabPx)) ||
+            this.useOnPan && this.swipeable && Math.abs(distance) > distanceToChangeTabPx) ||
           (this.getVelocity(distance, event.timeStamp - this._startTime) > this._velocityThreshold &&
-            (this.swipeable && Math.abs(distance) > distanceToChangeTabPx / 2))
+            this.swipeable && Math.abs(distance) > distanceToChangeTabPx / 2)
         ) {
           if (distance < 0 && this.activeTab < this.getCurrentTabPanes().length - 1) {
             this.keyToSelect++;

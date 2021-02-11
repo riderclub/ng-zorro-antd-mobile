@@ -156,8 +156,10 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       this.indexArray[parseInt(event.target.id, 0)]
     ] = this.data[parseInt(event.target.id, 0)][this.index];
     if (this.judgeTime(this.current_time, this.max_date)) {
-      this.currentTime = this.current_time =
-        this.max_date.slice(0, this.options.mode === 'time' ? this.modeSwitch.length : this.indexArray.length);
+      this.currentTime = this.current_time = this.max_date.slice(
+        0,
+        this.options.mode === 'time' ? this.modeSwitch.length : this.indexArray.length
+      );
       this.resultArr = this.current_time;
       this.options.onValueChange.emit({ date: this.handleReslut(), index: event.target.id });
       if (this.options.updateNgModel) {
@@ -168,8 +170,10 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       }
       this.init();
     } else if (this.judgeTime(this.min_date, this.current_time)) {
-      this.currentTime = this.current_time =
-        this.min_date.slice(0, this.options.mode === 'time' ? this.modeSwitch.length : this.indexArray.length);
+      this.currentTime = this.current_time = this.min_date.slice(
+        0,
+        this.options.mode === 'time' ? this.modeSwitch.length : this.indexArray.length
+      );
       this.resultArr = this.currentTime;
       this.options.onValueChange.emit({ date: this.handleReslut(), index: event.target.id });
       if (this.options.updateNgModel) {
@@ -438,28 +442,33 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
               break;
             case 3:
               this.localMinDate[_indexArrayIndex] = min_date[i] =
-                this.localMinDate[_indexArrayIndex - timeModeIndex] >= 0 && this.localMinDate[_indexArrayIndex - timeModeIndex] <= 23
+                this.localMinDate[_indexArrayIndex - timeModeIndex] >= 0 &&
+                this.localMinDate[_indexArrayIndex - timeModeIndex] <= 23
                   ? this.localMinDate[_indexArrayIndex - timeModeIndex]
                   : 0;
               if (this.options.use12Hours) {
                 this.localMaxDate[_indexArrayIndex] = max_date[i] =
-                  this.localMaxDate[_indexArrayIndex - timeModeIndex] >= 0 && this.localMaxDate[_indexArrayIndex - timeModeIndex] <= 11
+                  this.localMaxDate[_indexArrayIndex - timeModeIndex] >= 0 &&
+                  this.localMaxDate[_indexArrayIndex - timeModeIndex] <= 11
                     ? this.localMaxDate[_indexArrayIndex - timeModeIndex]
                     : 11;
               } else {
                 this.localMaxDate[_indexArrayIndex] = max_date[i] =
-                  this.localMaxDate[_indexArrayIndex - timeModeIndex] >= 0 && this.localMaxDate[_indexArrayIndex - timeModeIndex] <= 23
+                  this.localMaxDate[_indexArrayIndex - timeModeIndex] >= 0 &&
+                  this.localMaxDate[_indexArrayIndex - timeModeIndex] <= 23
                     ? this.localMaxDate[_indexArrayIndex - timeModeIndex]
                     : 23;
               }
               break;
             case 4:
               this.localMinDate[_indexArrayIndex] = min_date[i] =
-                this.localMinDate[_indexArrayIndex - timeModeIndex] >= 0 && this.localMinDate[_indexArrayIndex - timeModeIndex] <= 59
+                this.localMinDate[_indexArrayIndex - timeModeIndex] >= 0 &&
+                this.localMinDate[_indexArrayIndex - timeModeIndex] <= 59
                   ? this.localMinDate[_indexArrayIndex - timeModeIndex]
                   : 0;
               this.localMaxDate[_indexArrayIndex] = max_date[i] =
-                this.localMaxDate[_indexArrayIndex - timeModeIndex] >= 0 && this.localMaxDate[_indexArrayIndex - timeModeIndex] <= 59
+                this.localMaxDate[_indexArrayIndex - timeModeIndex] >= 0 &&
+                this.localMaxDate[_indexArrayIndex - timeModeIndex] <= 59
                   ? this.localMaxDate[_indexArrayIndex - timeModeIndex]
                   : 59;
               break;
@@ -639,9 +648,17 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     let status = null;
     if (sta) {
-      status = this.judgeEqualArray(this.min_date, this.resultArr, this.options.mode === 'time' ? checkIdx + 4 : checkIdx + 1);
+      status = this.judgeEqualArray(
+        this.min_date,
+        this.resultArr,
+        this.options.mode === 'time' ? checkIdx + 4 : checkIdx + 1
+      );
     } else {
-      status = this.judgeEqualArray(this.max_date, this.resultArr, this.options.mode === 'time' ? checkIdx + 4 : checkIdx + 1);
+      status = this.judgeEqualArray(
+        this.max_date,
+        this.resultArr,
+        this.options.mode === 'time' ? checkIdx + 4 : checkIdx + 1
+      );
     }
     if (!status) {
       let min = 0;

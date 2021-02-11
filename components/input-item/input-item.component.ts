@@ -15,6 +15,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { isTemplateRef } from '../core/util/check';
 import { NzmInputType } from './input-item.definitions';
+import { NzmInputAutocompleteType } from './input-item-autocomplete.definitions';
 
 @Component({
   selector: 'InputItem, nzm-input-item',
@@ -60,10 +61,11 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   private _isClear: boolean = false;
   private _fontColor: string;
   private _content: string | TemplateRef<any> = '';
+  private _autocomplete: NzmInputAutocompleteType;
   private _inputLock = false;
 
-  @ViewChild('lableContent', { static: true })
-  lableRef: ElementRef;
+  @ViewChild('labelContent', { static: true })
+  labelRef: ElementRef;
   @ViewChild('inputElement')
   inputElementRef: ElementRef;
 
@@ -72,7 +74,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     return this._type;
   }
   set type(value: NzmInputType) {
-    if (value && value.length > 0) {
+    if (value && value.length) {
       this.inputType = value;
       if (value === 'bankCard' || value === 'phone') {
         this._type = 'tel';
@@ -232,6 +234,14 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     this.setCls();
   }
 
+  @Input()
+  get autoComplete(): NzmInputAutocompleteType {
+    return this._autocomplete;
+  }
+  set autoComplete(value: NzmInputAutocompleteType) {
+    this._autocomplete = value;
+  }
+
   @Input() compositionFilter = true;
 
   @Output()
@@ -260,16 +270,18 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     this._el = element.nativeElement;
   }
 
-  _onChange = (_: any) => { };
+  _onChange = (_: any) => {};
 
   setCls() {
     if (
-      this.lableRef.nativeElement.children.length > 0 ||
-      (this.lableRef.nativeElement && this.lableRef.nativeElement.innerText !== '') ||
+      this.labelRef.nativeElement.children.length > 0 ||
+      (this.labelRef.nativeElement && this.labelRef.nativeElement.innerText !== '') ||
       this._content != undefined
     ) {
       this.labelCls = {
         [`${this.prefixCls}-label`]: true,
+        [`${this.prefixCls}-label-0`]: this._labelNumber === 0,
+        [`${this.prefixCls}-label-1`]: this._labelNumber === 1,
         [`${this.prefixCls}-label-2`]: this._labelNumber === 2,
         [`${this.prefixCls}-label-3`]: this._labelNumber === 3,
         [`${this.prefixCls}-label-4`]: this._labelNumber === 4,
@@ -384,7 +396,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: any): void { }
+  registerOnTouched(fn: any): void {}
 
   ngOnInit() {
     this.setCls();
