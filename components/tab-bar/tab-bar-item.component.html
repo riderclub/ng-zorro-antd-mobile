@@ -3,7 +3,7 @@
 </ng-template>
 
 <ng-template #tabBarTab>
-  <div class="{{ prefixCls }}-icon" [style.color]="selected ? tintColor : unselectedTintColor">
+  <a [routerLink]="link" [routerLinkActive]="tintColor" class="{{ prefixCls }}-icon" [style.color]="selected ? tintColor : unselectedTintColor">
     <Badge *ngIf="badge" className="{{ prefixCls }}-badge tab-badge" [text]="badge">
       <ng-container *ngIf="isTemplateRef(selected ? selectedIcon : icon); then domTemplate; else imgTemplate">
       </ng-container>
@@ -16,7 +16,7 @@
       <ng-container *ngIf="isTemplateRef(selected ? selectedIcon : icon); then domTemplate; else imgTemplate">
       </ng-container>
     </ng-container>
-  </div>
+  </a>
   <p class="{{ prefixCls }}-title" [style.color]="selected ? tintColor : unselectedTintColor">
     {{ title }}
   </p>

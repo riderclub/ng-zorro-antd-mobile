@@ -15,6 +15,7 @@ export interface TabBarOnPressEvent {
   index: number;
   title: string;
   key: string;
+  link: any[] | string | null | undefined;
 }
 
 @Component({
