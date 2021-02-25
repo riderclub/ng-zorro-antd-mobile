@@ -36,3 +36,4 @@ Properties | Descrition | Type | Default
 | `[selectedIcon]` | The icon of selected | `TemplateRef` | - |
 | `[title]` | Title | `string` | - |
 | `[key]` | Unique identification | `string` | - |
+| `[link]` | router link | `any[] \| string \| null \| undefined` | - |
