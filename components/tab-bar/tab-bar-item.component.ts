@@ -17,6 +17,8 @@ export class TabBarItemComponent extends TabPaneComponent {
   @Input()
   key: string = '';
   @Input()
+  routeActiveExact: boolean = false;
+  @Input()
   link: any[] | string | null | undefined = null;
   @Input()
   dot: boolean = false;
