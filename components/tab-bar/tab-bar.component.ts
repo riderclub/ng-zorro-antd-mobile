@@ -16,6 +16,7 @@ export interface TabBarOnPressEvent {
   title: string;
   key: string;
   link: any[] | string | null | undefined;
+  routeActiveExact: boolean;
 }
 
 @Component({

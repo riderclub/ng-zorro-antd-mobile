@@ -23,7 +23,15 @@
       <div
         class="am-tab-bar-tab"
         *ngFor="let tabBarItem of tabBarItems; let i = index"
-        (click)="tabBarTabOnPress({ index: i, key: tabBarItem.key, title: tabBarItem.title, link: tabBarItem.link })"
+        (click)="
+          tabBarTabOnPress({
+            index: i,
+            key: tabBarItem.key,
+            title: tabBarItem.title,
+            link: tabBarItem.link,
+            routeActiveExact: tabBarItem.routeActiveExact
+          })
+        "
       >
         <ng-container [ngTemplateOutlet]="tabBarItem.tabBarTab"></ng-container>
       </div>
