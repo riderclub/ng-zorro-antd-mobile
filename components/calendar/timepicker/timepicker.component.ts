@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core';
-import { zh_CN, en_US } from '../../locale-provider/locale';
+import { zh_CN, en_US, fr_FR } from '../../locale-provider/locale';
 import { CalendarTimePickerPropsType } from './PropsType';
 
 @Component({
@@ -35,6 +35,8 @@ export class CalendarTimePickerComponent {
 
     if (this.props.locale && this.props.locale.today === 'Today') {
       this.props.datePickerViewLocale = en_US;
+    } else if (this.props.locale && this.props.locale.today === 'Aujourd\'hui') {
+      this.props.datePickerViewLocale = fr_FR;
     } else {
       this.props.datePickerViewLocale = zh_CN;
     }
