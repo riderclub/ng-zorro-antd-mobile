@@ -14,6 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateModels } from './date/DataTypes';
 import zhCN from './locale/zh_CN';
 import enUS from './locale/en_US';
+import frFR from './locale/fr_FR';
 import { CalendarPropsType } from './calendar.props.component';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { mergeDateTime, isSameDate } from './util/index';
@@ -82,6 +83,8 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
       this.props.locale = enUS;
     } else if (value === 'zhCN') {
       this.props.locale = zhCN;
+    } else if (value === 'frFR') {
+      this.props.locale = frFR;
     }
 
     this._unsubscribe$.next();

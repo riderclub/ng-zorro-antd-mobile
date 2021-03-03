@@ -2,13 +2,22 @@
 type InputType =
   | 'button'
   | 'checkbox'
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
   | 'file'
   | 'hidden'
   | 'image'
+  | 'month'
   | 'password'
   | 'radio'
+  | 'range'
   | 'reset'
   | 'submit'
-  | 'text';
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
 
 export type NzmInputType = InputType | 'bankCard' | 'phone' | 'number' | 'digit' | 'money ' | 'tel' | 'money';
