@@ -16,6 +16,7 @@
     [lowerBound]="min"
     [upperBound]="value"
     [included]="included"
+    (onClick)="handleChange($event)"
   ></SliderSteps>
   <SliderHandle
     [max]="max"

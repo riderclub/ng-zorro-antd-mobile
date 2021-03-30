@@ -88,23 +88,26 @@ rootDir.forEach(componentName => {
         zhCode += generateCode(componentName, demo.key, demo.meta.title['zh-CN'], demo.zh, demo.meta.iframe);
       });
     }
-    demoMap['basic']['enCode'] = generateCodeBox(showCaseComponentPath, componentName, 'en', enCode, keys, enTitles);
-    demoMap['basic']['zhCode'] = generateCodeBox(showCaseComponentPath, componentName, 'zh', zhCode, keys, zhTitles);
-    // 处理components->${component}->doc文件夹
-    const result = {
-      name: componentName,
-      docZh: parseDocMdUtil(
-        fs.readFileSync(path.join(componentDirPath, 'doc/index.zh-CN.md')),
-        `components/${componentName}/doc/index.zh-CN.md`
-      ),
-      docEn: parseDocMdUtil(
-        fs.readFileSync(path.join(componentDirPath, 'doc/index.en-US.md')),
-        `components/${componentName}/doc/index.en-US.md`
-      ),
-      demoMap: demoMap
-    };
-    componentsMap[componentName] = result.docZh.meta;
-    generateDemo(showCaseComponentPath, result);
+
+    if (demoMap['basic']) {
+      demoMap['basic']['enCode'] = generateCodeBox(showCaseComponentPath, componentName, 'en', enCode, keys, enTitles);
+      demoMap['basic']['zhCode'] = generateCodeBox(showCaseComponentPath, componentName, 'zh', zhCode, keys, zhTitles);
+      // 处理components->${component}->doc文件夹
+      const result = {
+        name: componentName,
+        docZh: parseDocMdUtil(
+          fs.readFileSync(path.join(componentDirPath, 'doc/index.zh-CN.md')),
+          `components/${componentName}/doc/index.zh-CN.md`
+        ),
+        docEn: parseDocMdUtil(
+          fs.readFileSync(path.join(componentDirPath, 'doc/index.en-US.md')),
+          `components/${componentName}/doc/index.en-US.md`
+        ),
+        demoMap: demoMap
+      };
+      componentsMap[componentName] = result.docZh.meta;
+      generateDemo(showCaseComponentPath, result);
+    }
   }
 });
 

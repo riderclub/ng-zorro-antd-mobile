@@ -4,18 +4,21 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { TabBarModule } from './tab-bar.module';
 import { TabsModule } from '../tabs/tabs.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('tabbar', () => {
   let component;
   let fixture: ComponentFixture<TestTabBarComponent>;
   let tabBarEle;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [TestTabBarComponent],
-      imports: [TabBarModule, TabsModule, NoopAnimationsModule, BrowserAnimationsModule]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [TestTabBarComponent],
+        imports: [RouterTestingModule, TabBarModule, TabsModule, NoopAnimationsModule, BrowserAnimationsModule]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestTabBarComponent);
