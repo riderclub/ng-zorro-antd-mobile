@@ -1,4 +1,13 @@
-import { Component, OnInit, ElementRef, Input, HostBinding, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  Input,
+  HostBinding,
+  ViewEncapsulation,
+  Output,
+  EventEmitter
+} from '@angular/core';
 
 @Component({
   selector: 'SliderSteps, nzm-slider-steps',
@@ -63,6 +72,9 @@ export class SliderStepsComponent implements OnInit {
     }
   }
 
+  @Output()
+  onClick = new EventEmitter<any>();
+
   @HostBinding()
   get class() {
     return 'am-slider-step';
@@ -122,6 +134,10 @@ export class SliderStepsComponent implements OnInit {
         [`${this.prefixCls}-dot-active`]: isActived
       };
     }
+  }
+
+  handleClick(step): void {
+    this.onClick.emit(step.point);
   }
 
   ngOnInit() {
