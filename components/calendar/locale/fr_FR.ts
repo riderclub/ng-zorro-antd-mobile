@@ -1,4 +1,5 @@
 export default {
+  type: 'fr-FR',
   title: 'Calendrier',
   today: 'Aujourd\'hui',
   month: 'Mois',
@@ -23,5 +24,5 @@ export default {
   loadPrevMonth: 'Charger le mois précédent',
   yesterday: 'Hier',
   lastWeek: 'Semaine dernière',
-  lastMonth: 'Mois dernier'
+  lastMonth: 'Mois dernier',
 };

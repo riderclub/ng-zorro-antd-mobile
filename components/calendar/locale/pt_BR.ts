@@ -1,6 +1,7 @@
 // 同步自 'rmc-calendar/lib/locale/pt_BR';
 
 export default {
+  type: 'pt-BR',
   title: 'Calendário',
   today: 'Hoje',
   month: 'Mês',
@@ -25,5 +26,5 @@ export default {
   loadPrevMonth: 'Carregar Mês Anterior',
   yesterday: 'Ontem',
   lastWeek: 'Última Semana',
-  lastMonth: 'Último Mês'
+  lastMonth: 'Último Mês',
 };

@@ -10,6 +10,7 @@ export namespace DateModels {
   }
 
   export interface Locale {
+    type: string;
     title: string;
     today: string;
     month: string;
