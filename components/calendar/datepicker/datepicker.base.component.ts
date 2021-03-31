@@ -127,9 +127,10 @@ export class CalendarDatePickerBaseComponent {
     if (!date) {
       date = new Date();
     }
+    const { locale } = this.props;
     const { firstDate, lastDate } = this.getMonthDate(date, addMonth);
     const weeks = this.genWeekData(firstDate);
-    const title = firstDate.toLocaleString(undefined, { month: 'long', year: 'numeric' });
+    const title = firstDate.toLocaleString(locale.type, { month: 'long', year: 'numeric', timeZone: 'UTC' });
     const data = {
       title,
       firstDate,

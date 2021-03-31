@@ -1,6 +1,7 @@
 // 同步自 'rmc-calendar/lib/locale/en_US';
 
 export default {
+  type: 'en-US',
   title: 'Calendar',
   today: 'Today',
   month: 'Month',
@@ -25,5 +26,5 @@ export default {
   loadPrevMonth: 'Load Prev Month',
   yesterday: 'Yesterday',
   lastWeek: 'Last Week',
-  lastMonth: 'Last Month'
+  lastMonth: 'Last Month',
 };

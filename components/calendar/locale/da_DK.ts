@@ -1,6 +1,7 @@
 // 同步自 'rmc-calendar/lib/locale/en_US';
 
 export default {
+  type: 'da-DK',
   title: 'Kalender',
   today: 'I dag',
   month: 'Måned',
@@ -25,5 +26,5 @@ export default {
   loadPrevMonth: 'Indlæs forrige måned',
   yesterday: 'I går',
   lastWeek: 'Sidste uge',
-  lastMonth: 'Sidste måned'
+  lastMonth: 'Sidste måned',
 };

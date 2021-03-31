@@ -1,6 +1,7 @@
 // 同步自 'rmc-calendar/lib/locale/zh_CN';
 
 export default {
+  type: 'zn-CN',
   title: '日期选择',
   today: '今天',
   month: '月',
@@ -25,5 +26,5 @@ export default {
   loadPrevMonth: '加载上一个月',
   yesterday: '昨天',
   lastWeek: '近一周',
-  lastMonth: '近一个月'
+  lastMonth: '近一个月',
 };
