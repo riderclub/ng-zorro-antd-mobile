@@ -1,11 +1,11 @@
 import {
-  OnInit,
-  OnDestroy,
+  AfterViewInit,
   Component,
-  ViewChild,
   ElementRef,
   HostListener,
-  AfterViewInit,
+  OnDestroy,
+  OnInit,
+  ViewChild,
   ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
@@ -14,7 +14,7 @@ import * as velocity from '../core/util/velocity';
 import * as touchEvent from '../core/util/touch-event';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { takeUntil } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { PickerRef } from './picker-ref.class';
 
 @Component({

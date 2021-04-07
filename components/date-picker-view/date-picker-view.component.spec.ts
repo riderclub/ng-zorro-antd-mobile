@@ -3,8 +3,8 @@ import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { DatePickerViewModule } from './date-picker-view.module';
-import { DatePickerOptions, DatePickerModule } from '../date-picker/index';
-import { LocaleProviderService, LocaleProviderModule, ToastModule, Toast, ToastComponent } from '../..';
+import { DatePickerModule, DatePickerOptions } from '../date-picker/index';
+import { LocaleProviderModule, LocaleProviderService, Toast, ToastModule } from '../..';
 import { en_US } from '../locale-provider/locale';
 
 describe('DatePickerViewComponent', () => {
@@ -14,17 +14,21 @@ describe('DatePickerViewComponent', () => {
 
   let service: LocaleProviderService;
 
-  beforeEach(waitForAsync(() => {
-    // service = new LocaleProviderService(LOCAL_PROVIDER_TOKEN);
-    // service.setLocale(zh_CN);
-    TestBed.configureTestingModule({
-      declarations: [TestDatePickerViewBasicComponent],
-      providers: [DatePickerOptions, LocaleProviderService, Toast],
-      imports: [DatePickerModule, DatePickerViewModule, LocaleProviderModule, ToastModule, FormsModule]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      // service = new LocaleProviderService(LOCAL_PROVIDER_TOKEN);
+      // service.setLocale(zh_CN);
+      TestBed.configureTestingModule({
+        declarations: [TestDatePickerViewBasicComponent],
+        providers: [DatePickerOptions, LocaleProviderService, Toast],
+        imports: [DatePickerModule, DatePickerViewModule, LocaleProviderModule, ToastModule, FormsModule]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
+    // TODO Desktop Units Tests
+    Object.defineProperty(window.navigator, 'userAgent', {value: 'iPhone'});
     fixture = TestBed.createComponent(TestDatePickerViewBasicComponent);
     component = fixture.componentInstance;
     datePickerViewEle = fixture.debugElement.query(By.css('datepickerview'));

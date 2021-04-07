@@ -208,6 +208,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
         this.toast.fail(this.errorMessage, this.options.showErrorToastInterval);
       }, 0);
     }
+
     this.initResult();
     this.initReady();
     this.getInitValueIndex();
@@ -339,9 +340,10 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
         return parseInt(item, 0);
       });
     }
-    const min_date = this.min_date;
-    const max_date = this.max_date;
-    const current_time = this.currentTime;
+    // WARNING OBJECT REFERENCE
+    const min_date = Object.assign({}, this.min_date);
+    const max_date = Object.assign({}, this.max_date);
+    const current_time = Object.assign({}, this.currentTime);
     this.localMinDate = [];
     if (this.localMinDate.length === 0) {
       for (let index = 0; index < this.indexArray.length; index++) {
@@ -488,7 +490,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     let date2;
     date1 = arr1.slice(0, 3).join('-') + ' ' + arr1.slice(3, 5).join(':');
     date2 = arr2.slice(0, 3).join('-') + ' ' + arr2.slice(3, 5).join(':');
-    return new Date(date1).getTime() > new Date(date2).getTime();
+    return this.parseUTC(date1).getTime() > this.parseUTC(date2).getTime();
   }
 
   judgeEqualArray(arr1, arr2, length) {
@@ -800,5 +802,11 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  // SAFARI !!!! https://stackoverflow.com/questions/50029024/utc-date-conversion-to-local-date-does-not-work-safari/50033029#50033029
+  private parseUTC(s) {
+    const b = s.split(/\D/);
+    return new Date(b[0], --b[1], b[2], b[3], b[4]);
   }
 }

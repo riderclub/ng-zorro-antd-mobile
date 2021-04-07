@@ -14,10 +14,12 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
 import { DatePickerOptions } from '../date-picker/date-picker-options.provider';
+import { forEach } from '@angular-devkit/schematics';
 
 @Component({
   selector: 'DatePickerView, nzm-date-picker-view',
   templateUrl: './date-picker-view.component.html',
+  styleUrls: ['./style/index.less'],
   encapsulation: ViewEncapsulation.None,
   providers: [
     {
@@ -30,6 +32,7 @@ import { DatePickerOptions } from '../date-picker/date-picker-options.provider';
 })
 export class DatePickerViewComponent extends DatePickerComponent
   implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {
+  isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(window.navigator.userAgent);
   @Input()
   mode: string = 'date';
   @Input()
@@ -62,7 +65,7 @@ export class DatePickerViewComponent extends DatePickerComponent
   amPicker = true;
 
   reloadPicker() {
-    if (this.currentPicker) {
+    if (this.isMobile && this.currentPicker) {
       const self = this;
       setTimeout(() => {
         self.selectedTarget.forEach((item, i) => {
@@ -121,6 +124,7 @@ export class DatePickerViewComponent extends DatePickerComponent
   ngAfterViewInit() {
     this.currentPicker = this.elementRef.nativeElement;
     this.reloadPicker();
+    this.scrollTo();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -139,12 +143,48 @@ export class DatePickerViewComponent extends DatePickerComponent
       ) {
         this.optionInit();
         this.init();
+
+        setTimeout(() => {
+          this.scrollTo();
+        }, 0);
       }
     }
 
     if (changes.mode || changes.minDate || changes.maxDate || changes.disabled || changes.locale) {
       this.optionInit();
       this.init();
+
+      setTimeout(() => {
+        this.scrollTo();
+      }, 0);
+    }
+  }
+
+  selectedTimes(indexCol) {
+    return this.resultArr[this.indexArray[parseInt(indexCol, 0)]];
+  }
+
+  onClick(indexCol, index) {
+    this.current_time[this.indexArray[parseInt(indexCol, 0)]] = this.resultArr[
+      this.indexArray[parseInt(indexCol, 0)]
+    ] = this.data[parseInt(indexCol, 0)][index];
+
+    this.options.onValueChange.emit({ date: this.handleReslut(), index: indexCol });
+    if (this.options.updateNgModel) {
+      this.options.updateNgModel(this.handleReslut());
+    }
+    if (this.ngModelOnChange) {
+      this.ngModelOnChange(this.handleReslut());
+    }
+  }
+
+  private scrollTo(): void {
+    if (!this.isMobile) {
+      const selectedElements =
+        this.elementRef.nativeElement.querySelectorAll('.am-picker-col-desktop-item-selected') ?? [];
+      selectedElements.forEach(element => {
+        element.scrollIntoView({block: "center", inline: "nearest"});
+      });
     }
   }
 }
