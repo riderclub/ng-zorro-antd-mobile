@@ -1,6 +1,6 @@
 {
   "name": "@riderclub/ng-zorro-antd-mobile",
-  "version": "4.0.12",
+  "version": "4.0.13",
   "description": "An enterprise-class mobile UI components based on Ant Design and Angular",
   "schematics": "./schematics/collection.json",
   "keywords": [

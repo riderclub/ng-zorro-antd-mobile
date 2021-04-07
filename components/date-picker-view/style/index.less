@@ -1,0 +1,23 @@
+@import '../../style/mixins';
+@import '../../style/themes/default';
+
+@pickerPrefixCls: am-picker-col;
+
+.@{pickerPrefixCls} {
+  &-desktop {
+    display: block;
+    position: relative;
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+    padding: 102px 0;
+
+    &-item {
+      &-selected, &:hover{
+        background: @brand-primary;
+        color: @color-text-base-inverse;
+        font-size: @button-font-size;
+      }
+    }
+  }
+}
