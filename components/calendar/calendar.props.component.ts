@@ -32,7 +32,7 @@ export interface CalendarPropsType {
   defaultDate?: Date;
   getDateExtra?: (date: Date) => DateModels.ExtraData;
   infiniteOpt?: boolean;
-  initalMonths?: number;
+  initialMonths?: number;
   maxDate?: Date;
   minDate?: Date;
   onSelectHasDisableDate?: (date: Date[]) => void;

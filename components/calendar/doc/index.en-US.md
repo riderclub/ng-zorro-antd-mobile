@@ -22,7 +22,7 @@ Properties | Description | Type | Default
 | `[visible]` | Visiable | `boolean` | `false` |
 | `[defaultDate]` | The default date for show | `Date` | `today` |
 | `[getDateExtra]` | Extra info | `(date: Date) => DateModels.ExtraData` | - |
-| `[initalMonths]` | Inital months | `number` | `6` |
+| `[initialMonths]` | Initial months | `number` | `6` |
 | `[maxDate]` | Max date | `Date` | - |
 | `[minDate]` | Min date | `Date` | - |
 | `[rowSize]` | Row size | `'normal' \| 'xl'` | - |
