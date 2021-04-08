@@ -13,7 +13,7 @@ export class CalendarDatePickerBaseComponent {
     infinite: false,
     infiniteOpt: false,
     defaultDate: new Date(),
-    initalMonths: 6,
+    initialMonths: 6,
     locale: defaultLocale
   } as DatepickerPropsType;
 
@@ -27,8 +27,8 @@ export class CalendarDatePickerBaseComponent {
   constructor() {}
 
   init() {
-    const { initalMonths = 6, defaultDate } = this.props;
-    for (let i = 0; i < initalMonths; i++) {
+    const { initialMonths = 6, defaultDate } = this.props;
+    for (let i = 0; i < initialMonths; i++) {
       if (this.canLoadNext()) {
         this.genMonthData(defaultDate, i);
       }

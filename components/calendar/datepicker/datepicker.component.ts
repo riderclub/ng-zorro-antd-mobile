@@ -144,7 +144,7 @@ export class CalendarDatePickerComponent extends CalendarDatePickerBaseComponent
     if (this._delta > 40 && this.canLoadPrev()) {
       this.genMonthData(this.state.months[0].firstDate, -1);
 
-      this.visibleMonth = this.state.months.slice(0, this.props.initalMonths);
+      this.visibleMonth = this.state.months.slice(0, this.props.initialMonths);
 
       this.state.months.forEach(m => {
         if (m.updateLayout) {

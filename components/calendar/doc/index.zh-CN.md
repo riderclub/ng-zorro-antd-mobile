@@ -24,7 +24,7 @@ subtitle: 日历
 | `[visible]` | 是否显示 | `boolean` | `false` |
 | `[defaultDate]` | 显示开始日期 | `Date` | `new Date()` |
 | `[getDateExtra]` | 日期扩展数据 | `(date: Date) => DateModels.ExtraData` | - |
-| `[initalMonths]` | 初始化月个数 | `number` | `6` |
+| `[initialMonths]` | 初始化月个数 | `number` | `6` |
 | `[maxDate]` | 最大日期 | `Date` | - |
 | `[minDate]` | 最小日期 | `Date` | - |
 | `[rowSize]` | 行大小 | `'normal' \| 'xl'` | - |

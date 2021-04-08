@@ -6,7 +6,7 @@ export interface DatepickerPropsType {
   endDate?: Date;
   getDateExtra?: (date: Date) => DateModels.ExtraData;
   infiniteOpt?: boolean;
-  initalMonths?: number;
+  initialMonths?: number;
   locale?: DateModels.Locale;
   maxDate?: Date;
   minDate?: Date;
