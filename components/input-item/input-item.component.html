@@ -35,12 +35,12 @@
         [maxlength]="maxLength"
         [pattern]="pattern"
         [style.color]="fontColor"
-        (ngModelChange)="inputChange($event)"
         (compositionstart)="compositionStart()"
         (compositionend)="compositionEnd()"
         (blur)="inputBlur(value)"
         (focus)="inputFocus(value)"
         [autocomplete]="autoComplete"
+        (change)="inputChange(inputElement.value)"
       />
     </div>
   </div>
