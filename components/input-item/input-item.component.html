@@ -27,6 +27,7 @@
         [type]="type"
         [name]="name"
         [(ngModel)]="value"
+        (ngModelChange)="inputChange($event)"
         [defaultValue]="defaultValue"
         [placeholder]="placeholder"
         [disabled]="disabled"
@@ -40,7 +41,7 @@
         (blur)="inputBlur(value)"
         (focus)="inputFocus(value)"
         [autocomplete]="autoComplete"
-        (change)="inputChange(inputElement.value)"
+        (change)="change.emit(inputElement.value)"
       />
     </div>
   </div>
