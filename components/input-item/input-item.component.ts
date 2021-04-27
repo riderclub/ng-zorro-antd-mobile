@@ -254,6 +254,8 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   onErrorClick: EventEmitter<any> = new EventEmitter<any>();
   @Output()
   onExtraClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
+  change: EventEmitter<any> = new EventEmitter<any>();
 
   @HostBinding('class.am-input-item')
   clsItem: boolean = true;
@@ -322,6 +324,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
       }
       this._onChange(this._value);
       this.onChange.emit(this._value);
+      console.log(inputValue);
     }, 0);
   }
 
