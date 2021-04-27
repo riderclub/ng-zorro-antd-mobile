@@ -324,7 +324,6 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
       }
       this._onChange(this._value);
       this.onChange.emit(this._value);
-      console.log(inputValue);
     }, 0);
   }
 
