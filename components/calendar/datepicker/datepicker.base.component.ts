@@ -1,7 +1,6 @@
 import { DateModels } from '../date/DataTypes';
 import { DatepickerPropsType } from './datepicker.props.component';
 import defaultLocale from '../locale/en_US';
-import { WEEK_START } from '../util';
 
 export interface DatepickerStateType {
   months: DateModels.MonthData[];
@@ -93,8 +92,8 @@ export class CalendarDatePickerBaseComponent {
     let currentWeek: DateModels.CellData[] = [];
     weeks.push(currentWeek);
 
-    let startWeekday = (currentDay.getDay() + 7 - WEEK_START) % 7;
-    if (startWeekday > WEEK_START) {
+    let startWeekday = currentDay.getDay();
+    if (startWeekday > 0) {
       for (let i = 0; i < startWeekday; i++) {
         currentWeek.push({} as DateModels.CellData);
       }
