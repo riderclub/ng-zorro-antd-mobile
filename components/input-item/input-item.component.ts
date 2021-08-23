@@ -63,6 +63,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   private _content: string | TemplateRef<any> = '';
   private _autocomplete: NzmInputAutocompleteType;
   private _inputLock = false;
+  private _inputTrim = false;
 
   @ViewChild('labelContent', { static: true })
   labelRef: ElementRef;
@@ -142,6 +143,15 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   set clear(value: boolean) {
     this._clear = value;
   }
+
+  @Input()
+  get trim(): boolean {
+    return this._inputTrim;
+  }
+  set trim(value: boolean) {
+    this._inputTrim = value;
+  }
+
   @Input()
   get maxLength(): number {
     return this._maxLength;
@@ -182,6 +192,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   get prefixListCls(): string {
     return this._prefixListCls;
   }
+
   set prefixListCls(value: string) {
     this._prefixListCls = value;
     this.render.addClass(this._el, value + '-item');
@@ -321,6 +332,10 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
       }
       if (this.inputType !== 'text') {
         this._value = value;
+      }
+
+      if (this._inputTrim) {
+        this._value = this._value.trim();
       }
       this._onChange(this._value);
       this.onChange.emit(this._value);
